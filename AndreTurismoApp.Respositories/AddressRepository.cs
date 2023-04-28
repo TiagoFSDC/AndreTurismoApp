@@ -13,13 +13,13 @@ namespace AndreTurismoApp.Repositories
     {
         private readonly string _strConn = @"Server=(localdb)\MSSQLLocalDB;Integrated Security=true;AttachDbFileName=C:\dev-aula\AgenciaTurismo\AgenciaTurismo\docs\Scripts\AgenciaTurismo.mdf";
 
-        public bool DeleteDapper(Address address)
+        public bool DeleteDapper(int id)
         {
             var status = false;
             using (var db = new SqlConnection(_strConn))
             {
                 db.Open();
-                db.Execute(Address.DELETE, address);
+                db.Execute(Address.DELETE, new { @Id = id});
                 status = true;
             }
             return status;

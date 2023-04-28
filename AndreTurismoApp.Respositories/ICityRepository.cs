@@ -15,6 +15,6 @@ namespace AndreTurismoApp.Repositories
 
         bool UpdateDapper(City city);
 
-        bool DeleteDapper(City city);
+        bool DeleteDapper(int Id);
     }
 }

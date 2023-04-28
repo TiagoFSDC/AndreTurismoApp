@@ -14,7 +14,10 @@ namespace AndreTurismoApp.AddressService.Data
             : base(options)
         {
         }
-
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<AddressDTO>().HasNoKey();
+        }
         public DbSet<AndreTurismoApp.Models.Address> Address { get; set; } = default!;
 
         public DbSet<AndreTurismoApp.Models.DTO.AddressDTO>? AddressDTO { get; set; }

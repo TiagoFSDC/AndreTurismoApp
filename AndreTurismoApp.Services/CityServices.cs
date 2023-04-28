@@ -10,7 +10,7 @@ using static System.Formats.Asn1.AsnWriter;
 
 namespace AndreTurismoApp.Services
 {
-    internal class CityServices
+    public class CityServices
     {
         readonly string strconn = @"Server=(localdb)\MSSQLLocalDB;Integrated Security=true;AttachDbFileName=C:\dev-aula\AgenciaTurismo\AgenciaTurismo\docs\Scripts\AgenciaTurismo.mdf";
         readonly SqlConnection Conn;
@@ -37,9 +37,9 @@ namespace AndreTurismoApp.Services
             return touragecyRepository.UpdateDapper(city);
         }
 
-        public bool DeleteDapper(City city)
+        public bool DeleteDapper(int Id)
         {
-            return touragecyRepository.DeleteDapper(city);
+            return touragecyRepository.DeleteDapper(Id);
         }
     }
 }

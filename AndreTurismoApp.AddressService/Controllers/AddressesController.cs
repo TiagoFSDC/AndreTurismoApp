@@ -9,7 +9,6 @@ using AndreTurismoApp.AddressService.Data;
 using AndreTurismoApp.Models;
 using AndreTurismoApp.Models.DTO;
 using AndreTurismoApp.AddressService.Services;
-using AndreTurismoApp.Services;
 
 namespace AndreTurismoApp.AddressService.Controllers
 {
@@ -18,7 +17,6 @@ namespace AndreTurismoApp.AddressService.Controllers
     public class AddressesController : ControllerBase
     {
         private readonly AndreTurismoAppAddressServiceContext _context;
-        //private readonly AddressServices _addressServices;
 
         public AddressesController(AndreTurismoAppAddressServiceContext context)
         {
@@ -33,17 +31,8 @@ namespace AndreTurismoApp.AddressService.Controllers
             {
                 return NotFound();
             }
-            return await _context.Address.ToListAsync();
+            return await _context.Address.Include(a => a.city).ToListAsync();
         }
-
-        [HttpGet("{cep:length(8)}")]
-        public ActionResult<AddressDTO> GetPostOffices(string cep)
-        {
-            //Exemplo de chamada de serviço - TESTE
-
-            return PostOfficeServices.GetAddress(cep).Result;
-        }
-
 
         // GET: api/Addresses/5
         [HttpGet("{id}")]
@@ -104,13 +93,14 @@ namespace AndreTurismoApp.AddressService.Controllers
                 return Problem("Entity set 'AndreTurismoAppAddressServiceContext.Address'  is null.");
             }
 
-            var addresses = await PostOfficeServices.GetAddress(address.ZipCode);
-            //_addressServices.InsertDapper(address);
+            AddressDTO addreesDto = PostOfficeServices.GetAddress(address.ZipCode).Result;
+            Address addressComplete = new Address(addreesDto);
+            addressComplete.Number = address.Number;
 
-            _context.Address.Add(address);
+            _context.Address.Add(addressComplete);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetAddress", new { id = address.Id }, address);
+            return addressComplete;
         }
 
         // DELETE: api/Addresses/5

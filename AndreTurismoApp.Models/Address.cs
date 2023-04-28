@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AndreTurismoApp.Models.DTO;
 
 namespace AndreTurismoApp.Models
 {
@@ -18,6 +19,11 @@ namespace AndreTurismoApp.Models
         public readonly static string UPDATE = @"update Endereco Set Logradouro = @Street where Id = @Id";
         public readonly static string DELETE = @"Delete from Endereco where Id = @Id";
 
+        public Address()
+        {
+
+        }
+        
         public int Id { get; set; }
         public string Street { get; set; }
         public int Number { get; set; }
@@ -26,6 +32,15 @@ namespace AndreTurismoApp.Models
         public string Complement { get; set; }
         public City city { get; set; }
         public DateTime RegisterDate { get; set; }
+
+        public Address(AddressDTO addressDTO)
+        {
+            this.Street = addressDTO.Logradouro;
+            this.District = addressDTO.Bairro;
+            this.Complement = addressDTO.Complemento;
+            this.ZipCode = addressDTO.CEP;
+            this.city = new City() { Description = addressDTO.Cidade };
+        }
 
         public override string ToString()
         {

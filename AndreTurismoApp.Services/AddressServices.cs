@@ -37,9 +37,9 @@ namespace AndreTurismoApp.Services
             return addressRepository.UpdateDapper(Address);
         }
 
-        public bool DeleteDapper(Address Address)
+        public bool DeleteDapper(int id)
         {
-            return addressRepository.DeleteDapper(Address);
+            return addressRepository.DeleteDapper(id);
         }
     }
 }

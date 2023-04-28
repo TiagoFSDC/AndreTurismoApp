@@ -20,7 +20,7 @@ namespace AndreTurismoApp.Models.DTO
         public string Bairro { get; set; }
 
         [JsonProperty("localidade")]
-        public string City { get; set; }
+        public string Cidade { get; set; }
 
         [JsonProperty("uf")]
         public string State { get; set; }
