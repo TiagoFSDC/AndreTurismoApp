@@ -8,13 +8,12 @@ namespace AndreTurismoApp.Models
 {
     public class Hotel
     {
-        internal Client client;
-
         public int Id { get; set; }
         public string Name { get; set; }
         public Address address { get; set; }
         public DateTime RegisterDate { get; set; }
         public decimal Price { get; set; }
+        public Client client { get; set; }
 
         public override string ToString()
         {

@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace AndreTurismoApp.Controllers
+namespace AndreTurismoApp.CityService.Controllers
 {
     [ApiController]
     [Route("[controller]")]

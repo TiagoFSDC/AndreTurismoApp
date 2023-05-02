@@ -1,5 +1,5 @@
-﻿using AndreTurismoApp.Models;
-using AndreTurismoApp.Services;
+﻿using System.Net;
+using AndreTurismoApp.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AndreTurismoApp.Controllers
@@ -8,37 +8,42 @@ namespace AndreTurismoApp.Controllers
     [ApiController]
     public class AddressController : ControllerBase
     {
-        private AddressServices _addressService;
-
-        public AddressController(AddressServices addressService)
+        private readonly Services.AddressService _addressService;
+        public AddressController(Services.AddressService addressService)
         {
-            _addressService = new AddressServices();
-        }
-
-        [HttpPost]
-        public bool Add(Address address)
-        {
-            return _addressService.InsertDapper(address);
+            _addressService = addressService;
         }
 
         [HttpGet]
-        public List<Address> GetAll()
+        public async Task<List<Address>> GetAddress()
         {
-            return _addressService.GetAllDapper();
+             return await _addressService.GetAddress();
         }
 
-        [HttpPut]
-        public bool Update(Address address)
+        [HttpGet("{id}")]
+        public async Task<Address> GetAddressById(int id)
         {
-
-            return _addressService.UpdateDapper(address);
+            return await _addressService.GetAddressById(id);
         }
 
-        [HttpDelete]
-        public bool Delete(int id)
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteAddress(int id) 
         {
-            return _addressService.DeleteDapper(id);
+            HttpStatusCode code = await _addressService.DeleteAddress(id);
+            return StatusCode((int)code);
+        }
+
+        [HttpPost]
+        public async Task<Address> PostAddress(Address a)
+        {
+            return await _addressService.PostAddress(a);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult> PutAddress(int id, Address a)
+        {
+            HttpStatusCode code = await _addressService.PutAddress(id, a);
+            return StatusCode((int)code);
         }
     }
 }
-

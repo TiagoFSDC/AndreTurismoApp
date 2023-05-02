@@ -1,11 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using AndreTurismoApp.Data;
-using AndreTurismoApp.Services;
-
+using AndreTurismoApp.PacketService.Data;
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<AndreTurismoAppContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("AndreTurismoAppContext") ?? throw new InvalidOperationException("Connection string 'AndreTurismoAppContext' not found.")));
+builder.Services.AddDbContext<AndreTurismoAppPacketServiceContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("AndreTurismoAppPacketServiceContext") ?? throw new InvalidOperationException("Connection string 'AndreTurismoAppPacketServiceContext' not found.")));
 
 // Add services to the container.
 
@@ -13,12 +11,6 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
-builder.Services.AddSingleton<AddressService>();
-builder.Services.AddSingleton<CustomerService>();
-builder.Services.AddSingleton<HotelService>();
-builder.Services.AddSingleton<TicketService>();
-builder.Services.AddSingleton<PacketService>();
 
 var app = builder.Build();
 
