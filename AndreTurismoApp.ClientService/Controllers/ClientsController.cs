@@ -104,7 +104,7 @@ namespace AndreTurismoApp.ClientService.Controllers
             _context.Client.Add(client);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetClient", new { id = client.Id }, client);
+            return client;
         }
 
         // DELETE: api/Clients/5

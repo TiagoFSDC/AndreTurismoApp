@@ -98,18 +98,18 @@ namespace AndreTurismoApp.HotelService.Controllers
             Address addressComplete = new Address(addreesDto);
             addressComplete.Number = hotel.address.Number;
             AddressDTO addreesDto2 = PostOfficeServices.GetAddress(hotel.client.address.ZipCode).Result;
-            Address addressComplete2 = new Address(addreesDto);
-            addressComplete.Number = hotel.client.address.Number;
+            Address addressComplete2 = new Address(addreesDto2);
+            addressComplete2.Number = hotel.client.address.Number;
 
             
-            hotel.client.address = addressComplete;
+            hotel.client.address = addressComplete2;
             hotel.address = addressComplete;
 
 
             _context.Hotel.Add(hotel);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetHotel", new { id = hotel.Id }, hotel);
+            return hotel;
         }
 
         // DELETE: api/Hotels/5

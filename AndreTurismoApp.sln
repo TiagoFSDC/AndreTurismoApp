@@ -17,11 +17,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AndreTurismoApp.CityService
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AndreTurismoApp.ClientService", "AndreTurismoApp.ClientService\AndreTurismoApp.ClientService.csproj", "{6E78CCA7-3A26-4EB2-B18D-25425225F695}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AndreTurismoApp.HotelService", "AndreTurismoApp.HotelService\AndreTurismoApp.HotelService.csproj", "{0A250959-F6C8-4384-83D3-7D7BE67C6B1C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AndreTurismoApp.HotelService", "AndreTurismoApp.HotelService\AndreTurismoApp.HotelService.csproj", "{0A250959-F6C8-4384-83D3-7D7BE67C6B1C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AndreTurismoApp.TicketService", "AndreTurismoApp.TicketService\AndreTurismoApp.TicketService.csproj", "{CF98FE73-E6CF-465E-919F-AFEB4B3EE54E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AndreTurismoApp.TicketService", "AndreTurismoApp.TicketService\AndreTurismoApp.TicketService.csproj", "{CF98FE73-E6CF-465E-919F-AFEB4B3EE54E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AndreTurismoApp.PacketService", "AndreTurismoApp.PacketService\AndreTurismoApp.PacketService.csproj", "{25B4051A-26AF-4952-B23D-56BBA9DA1B11}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AndreTurismoApp.PacketService", "AndreTurismoApp.PacketService\AndreTurismoApp.PacketService.csproj", "{25B4051A-26AF-4952-B23D-56BBA9DA1B11}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTest", "UnitTest\UnitTest.csproj", "{3028FF8C-63A5-4E6B-BDDB-6FEA245124D6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +71,10 @@ Global
 		{25B4051A-26AF-4952-B23D-56BBA9DA1B11}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{25B4051A-26AF-4952-B23D-56BBA9DA1B11}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{25B4051A-26AF-4952-B23D-56BBA9DA1B11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3028FF8C-63A5-4E6B-BDDB-6FEA245124D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3028FF8C-63A5-4E6B-BDDB-6FEA245124D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3028FF8C-63A5-4E6B-BDDB-6FEA245124D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3028FF8C-63A5-4E6B-BDDB-6FEA245124D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
